@@ -28,8 +28,10 @@ DEBUG = os.getenv("DEBUG", "True") == "True"
 
 
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['ai-resume-intelligence-platform.onrender.com']
+CSRF_TRUSTED_ORIGINS = [
+    'https://ai-resume-intelligence-platform.onrender.com'
+]
 
 # Application definition
 
@@ -45,6 +47,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
