@@ -1,0 +1,17 @@
+{% extends 'analyzer/base.html' %}
+{% block content %}
+<h2>Analyze Resume</h2>
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label class="form-label">Upload Resume</label>
+    {{ form.resume_file }}
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Job Description</label>
+    {{ form.job_description }}
+  </div>
+  <button type="submit" class="btn btn-primary">Analyze</button>
+</form>
+{% endblock %}

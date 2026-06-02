@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Resume Intelligence Platform</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+
+        <a class="navbar-brand"
+           href="{% url 'dashboard' %}">
+            Resume AI
+        </a>
+
+        <div>
+
+            {% if user.is_authenticated %}
+
+            <a class="btn btn-outline-light btn-sm me-2"
+               href="{% url 'analyze_resume' %}">
+               Analyze
+            </a>
+
+            <a class="btn btn-outline-light btn-sm me-2"
+               href="{% url 'history' %}">
+               History
+            </a>
+
+            <form method="post"
+                  action="{% url 'logout' %}"
+                  style="display:inline;">
+                {% csrf_token %}
+                <button type="submit"
+                        class="btn btn-danger btn-sm">
+                    Logout
+                </button>
+            </form>
+
+            {% else %}
+
+            <a class="btn btn-success btn-sm"
+               href="{% url 'login' %}">
+               Login
+            </a>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+</nav>
+
+<div class="container mt-4">
+
+    {% block content %}
+    {% endblock %}
+
+</div>
+
+</body>
+</html>

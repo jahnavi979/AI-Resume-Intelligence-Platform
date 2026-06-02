@@ -1,0 +1,37 @@
+{% extends 'analyzer/base.html' %}
+{% block content %}
+<div class="card shadow-sm p-4">
+    <h2 class="mb-4">Analysis History</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped align-middle">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>ATS Score</th>
+                    <th>Matched Keywords</th>
+                    <th>Missing Keywords</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for analysis in analyses %}
+                <tr>
+                    <td>{{ analysis.created_at }}</td>
+                    <td>{{ analysis.ats_score }}%</td>
+                    <td>{{ analysis.matched_keywords|truncatechars:50 }}</td>
+                    <td>{{ analysis.missing_keywords|truncatechars:50 }}</td>
+                    <td>
+                        <a href="{% url 'report' analysis.id %}" class="btn btn-sm btn-outline-success">Open</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5">No history available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'analyzer/base.html' %}
+{% block content %}
+<div class="card shadow-sm p-4">
+    <h2>Resume Analysis Report</h2>
+    <p><strong>ATS Score:</strong> {{ analysis.ats_score }}%</p>
+
+    <div class="row g-3">
+        <div class="col-md-6">
+            <div class="card p-3">
+                <h5>Matched Keywords</h5>
+                <p>{{ analysis.matched_keywords }}</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card p-3">
+                <h5>Missing Keywords</h5>
+                <p>{{ analysis.missing_keywords }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card p-3 mt-3">
+        <h5>Suggestions</h5>
+        <pre style="white-space: pre-wrap;">{{ analysis.suggestions }}</pre>
+    </div>
+
+    <div class="mt-3">
+        <a href="{% url 'history' %}" class="btn btn-secondary">Back to History</a>
+    </div>
+</div>
+{% endblock %}
