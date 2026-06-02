@@ -24,15 +24,18 @@ load_dotenv(BASE_DIR / ".env")
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 
-DEBUG = os.getenv("DEBUG", "True") == "True"
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
 
 
-ALLOWED_HOSTS = ['ai-resume-intelligence-platform.onrender.com']
-CSRF_TRUSTED_ORIGINS = [
-    'https://ai-resume-intelligence-platform.onrender.com'
+ALLOWED_HOSTS = [
+    "ai-resume-intelligence-platform-4j08.onrender.com",
+    "127.0.0.1",
+    "localhost",
 ]
-
+CSRF_TRUSTED_ORIGINS = [
+    "https://ai-resume-intelligence-platform-4j08.onrender.com",
+]
 # Application definition
 
 INSTALLED_APPS = [
